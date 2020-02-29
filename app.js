@@ -1,7 +1,14 @@
 const express = require("express");
 
 const multer = require('multer');
-const upload = multer({dest:'./public'})
+const storage = multer.diskStorage({
+    destination:(req,file,cb) =>{
+        cb(null,'./public');
+    },
+    filename:(req,file,cb)=>{cb(null,'a.png')}
+})
+// const upload = multer({dest:'./public'})
+const upload = multer({storage:storage});
 
  const reload = require('reload');
 
