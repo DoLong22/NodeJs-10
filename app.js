@@ -5,7 +5,7 @@ const storage = multer.diskStorage({
     destination:(req,file,cb) =>{
         cb(null,'./public');
     },
-    filename:(req,file,cb)=>{cb(null,'a.png')}
+    filename:(req,file,cb)=>{cb(null, Date.now()+'.png')} //để tên file ko bị trùng vì bị trùng sẽ bị ghi đè
 })
 // const upload = multer({dest:'./public'})
 const upload = multer({storage:storage});
